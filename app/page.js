@@ -94,7 +94,7 @@ export default function Home() {
                   justifyContent={message.role === 'assistant' ? "flex-start" : "flex-end"}
                 >
                   <Box
-                    bgcolor={message.role === 'assistant' ? "black" : "gray"} // text box color 
+                    bgcolor={message.role === 'assistant' ? "black" : "#484848"} // text box color 
                     fontSize={16}
                     color="white"
                     paddingRight={1.5}
