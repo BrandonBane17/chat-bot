@@ -1,5 +1,5 @@
 "use client"
-import { Button, Stack, Box, TextField } from "@mui/material"
+import { Button, Stack, Box, TextField, Typography } from "@mui/material"
 import { useState } from "react"
 
 
@@ -42,78 +42,99 @@ export default function Home() {
   // return function   
   return (
     <Box
-      width="100vw"
-      height="100vh"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      
+      sx={{
+        //backgroundImage: 'url("https://www.nba.com/resources/static/team/v2/nets/images/hero.jpg")',
+        //backgroundImage: 'url("basketball_falling,mp4")',
+        //backgroundImage: 'url("istockphoto-472)', 
+        backgroundColor: 'black',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        height: '100vh',
+        width: '100vw',
+        margin: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
     >
-      <Stack 
-        direction={"column"} 
-        width="550px" 
-        height="750px"
-        border="2px solid black" 
-        boxShadow={4}
-        p={2}
+      <Box
+        //width="100vw"
+        //height="100vh"
         borderRadius={4}
-        
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        backgroundColor="white"
       >
-        <Stack
-          direction={"column"}
-          spacing={2}
-          flexGrow={1}
-          overflow={"auto"}
-          maxHeight={"100%"}
-          
+        <Stack 
+         direction={"column"} 
+          width="600px" 
+          height="800px"
+          border="2px solid black" 
+          boxShadow={4}
+          p={2}
+          borderRadius={4}
+        
         >
-          {
-            messages.map((message, index) => (
-              <Box
-                key={index}
-                display="flex"
-                justifyContent={message.role === 'assistant' ? "flex-start" : "flex-end"}
-              >
-                <Box
-                  bgcolor={message.role === 'assistant' ? "primary.main" : "secondary.main"}
-                  fontSize={16}
-                  color="white"
-                  paddingRight={2}
-                  paddingLeft={2}
-                  paddingTop={1.5}
-                  paddingBottom={1.5}
-                  borderRadius={3}
-                  boxShadow={2}
-                  //p={2}
-                >
-                  {message.content}
-                  </Box>
-              </Box>
-            ))}
-        </Stack>
-        <Stack direction={"row"} spacing={2}>
-          <TextField 
-            label="Message" 
-            fullWidth 
-            value={message} 
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <Button variant="contained" onClick={sendMessage}
-          sx={{
-            border: '2px solid black', // Add border
-            backgroundColor: '#4caf50', // Set background color
-            color: 'white', // Set text color
-          '&:hover': {
-            backgroundColor: '#45a049', // Set background color on hover
-            borderColor: '#0057e7', // Set border color on hover
-            },
-          }}
+          <Stack
+            direction={"column"}
+            spacing={2}
+            flexGrow={1}
+            overflow={"auto"}
+            maxHeight={"100%"}
+            p = {2}
           >
-            Send
-          </Button>
+            {
+              messages.map((message, index) => (
+                <Box
+                  key={index}
+                  display="flex"
+                  justifyContent={message.role === 'assistant' ? "flex-start" : "flex-end"}
+                >
+                  <Box
+                    bgcolor={message.role === 'assistant' ? "black" : "gray"} // text box color 
+                    fontSize={16}
+                    color="white"
+                    paddingRight={1.5}
+                    paddingLeft={1.5}
+                    paddingTop={1.5}
+                    paddingBottom={1.5}
+                    borderRadius={3}
+                    boxShadow={2}
+                    //p={2}
+                  >
+                    {message.content}
+                  </Box>
+                </Box>
+              ))}
           </Stack>
-      </Stack>
+          <Stack direction={"row"} spacing={2} borderRadius={10}>
+            <TextField 
+              label="Message" 
+              fullWidth 
+              value={message} 
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <Button variant="contained" onClick={sendMessage}
+            sx={{
+              border: '2px solid black', // Add border
+              backgroundColor: 'black', // Set background color
+              color: 'white', // Set text color
+              borderRadius: '12px', // Set border radius
+            '&:hover': {
+              backgroundColor: 'black', // Set background color on hover
+              borderColor: 'white', // Set border color on hover
+              borderWidth: '3px', // Set border width on hover
+              },
+            }}
+          >
+                Send
+              </Button>
+            </Stack>
+        </Stack>
+      </Box>
     </Box>
   )
 }
