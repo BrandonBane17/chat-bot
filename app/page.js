@@ -38,6 +38,8 @@ export default function Home() {
         })
       })
     }
+
+  // return function   
   return (
     <Box
       width="100vw"
@@ -46,13 +48,17 @@ export default function Home() {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
+      
     >
       <Stack 
         direction={"column"} 
-        width="500px" 
-        height="700px"
-        border="1px solid black" 
+        width="550px" 
+        height="750px"
+        border="2px solid black" 
+        boxShadow={4}
         p={2}
+        borderRadius={4}
+        
       >
         <Stack
           direction={"column"}
@@ -60,6 +66,7 @@ export default function Home() {
           flexGrow={1}
           overflow={"auto"}
           maxHeight={"100%"}
+          
         >
           {
             messages.map((message, index) => (
@@ -70,9 +77,15 @@ export default function Home() {
               >
                 <Box
                   bgcolor={message.role === 'assistant' ? "primary.main" : "secondary.main"}
+                  fontSize={16}
                   color="white"
-                  p={3.5}
-                  borderRadius={16}
+                  paddingRight={2}
+                  paddingLeft={2}
+                  paddingTop={1.5}
+                  paddingBottom={1.5}
+                  borderRadius={3}
+                  boxShadow={2}
+                  //p={2}
                 >
                   {message.content}
                   </Box>
@@ -86,7 +99,17 @@ export default function Home() {
             value={message} 
             onChange={(e) => setMessage(e.target.value)}
           />
-          <Button variant="contained" onClick={sendMessage}>
+          <Button variant="contained" onClick={sendMessage}
+          sx={{
+            border: '2px solid black', // Add border
+            backgroundColor: '#4caf50', // Set background color
+            color: 'white', // Set text color
+          '&:hover': {
+            backgroundColor: '#45a049', // Set background color on hover
+            borderColor: '#0057e7', // Set border color on hover
+            },
+          }}
+          >
             Send
           </Button>
           </Stack>
